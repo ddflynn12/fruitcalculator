@@ -1,0 +1,39 @@
+﻿@model Dal.Models.Cart
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Flynn's Fruit Market</h1>
+    <p>
+        @using (Html.BeginForm())
+        {
+            <!-- please don't laugh at me using a table.  speed is of the essence I was told -->
+            <table style="width: 500px;">
+                <thead>
+                    <tr>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                    </tr>
+                </thead>
+               @Html.EditorFor(model => model.Items)
+            </table>
+
+            <div>Include Promotions: @Html.CheckBoxFor(model => model.IncludePromotions)</div> 
+
+            <input type="submit" value="Calculate" />
+        }
+
+        <p>
+            Total: @Model.Total.ToString("c")
+        </p>
+    </p>
+</div>

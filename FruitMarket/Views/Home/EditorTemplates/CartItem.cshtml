@@ -1,0 +1,16 @@
+﻿@model Dal.Models.CartItem
+
+<tr>
+    <td>
+        @Model.Description
+        @Html.HiddenFor(model => model.Description)
+    </td>
+    <td>
+        @Model.Price.ToString("c")
+        @Html.HiddenFor(model => model.Price)
+    </td>
+    <td>
+        @if (Model.Description != "Promotion")
+            @Html.TextBoxFor(model => model.Quantity)
+    </td>
+</tr>
